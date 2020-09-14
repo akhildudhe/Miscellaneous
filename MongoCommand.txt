@@ -1,0 +1,190 @@
+Database---->Collections---->Documents--->Fileds
+Database---->Tables---->Rows---->Columns
+>>> means example command
+>> means command syntax with parameters
+---------------------------------------------------------------------------------------------
+(*) if the database name dbName is not present in the storage then the command creates the new database and switched to it
+
+>>>use dbName
+
+
+---------------------------------------------------------------------------------------------
+(*) show the current db 
+
+>>>db
+
+---------------------------------------------------------------------------------------------
+(*) show all the database which have some kind of data in it. If you wrote "use mydb" and just after that write "show dbs" it will not show the entry of "mydb" since there is no data in the mydb
+
+>>>show dbs
+
+---------------------------------------------------------------------------------------------
+(*) Drop the current selected database
+ 
+>>>db.dropDatabase()
+
+============================================================================================
+Collections
+============================================================================================
+(*) Shows all the collections present in the current selected database
+
+>>show collections
+
+---------------------------------------------------------------------------------------------
+(*) Create the collection/Table in the database
+
+>>db.createCollection(name,<option>)
+>>>db.createCollection(studentDetails)
+
+---------------------------------------------------------------------------------------------
+(*) Drop the collection/Table from the database 
+
+>>db.<collectionName>.drop()
+>>>db.studentDetails.drop()
+
+---------------------------------------------------------------------------------------------
+(*) Insert one row/document/entry in table/collection
+
+>>db.<collectionName>.insert(<document>)
+>>db.studentDetails.insert(
+		{
+			"studentNo" : "1",
+			"firstName" : "Akhil",
+			"lastName"  : "Dudhe",
+			"age": "29"
+
+		}
+)
+
+
+
+---------------------------------------------------------------------------------------------
+(*) Insert multiple record/row/document in one command
+
+>>db.<collectionName>.insert([<document1>,<document2>])
+>>db.studentDetails.insert(
+	[
+		{
+			"studentNo" : "1",
+			"firstName" : "Akhil",
+			"lastName"  : "Dudhe",
+			"age": "29"
+
+		},
+		{
+			"studentNo" : "2",
+			"firstName" : "John",
+			"lastName"  : "Doe",
+			"age": "15"
+
+		},
+	]
+)
+
+
+
+---------------------------------------------------------------------------------------------
+(*)  Equivalent to "select * from tablename;" Show all the rows of the table
+	 Using pretty() prints out the data in json format  
+
+>>db.<collectionName>.find()
+>>db.<collectionName>.find().pretty()
+
+>>>db.studentDetails.find()
+---------------------------------------------------------------------------------------------
+(*) Shows the data with some condition
+
+>>db.<collectionName>.find( {<fieldName> : <value>} )
+>>>db.studentDetails.find({"studentNo" : "1"})
+
+---------------------------------------------------------------------------------------------
+(*) Shows the data with some more detailed condition on integervalues
+
+>>db.<collectionName>.find( {<fieldName> : { $gt : <value> } } )
+>>>db.studenDetails.find({"age":{$gt: "20"}})
+
+$gt,$gte,$lt,$lte,$ne
+
+---------------------------------------------------------------------------------------------
+(*) Conditional AND query. The filedName should be comma seperated values.
+
+
+>> db.<collectionName>.find( 
+		{
+				<fieldName1> : <value> , <fieldName2> : <value>
+		} 
+	)
+>>> db.studenDetails.find( {"firstName" : "Akhil" , "age" : "29"} )
+
+
+---------------------------------------------------------------------------------------------
+(*) Conditional OR query. 
+
+>> db.<collectionName>.find( 
+		{
+				$or : [{ <fieldName2> : <value> , <fieldName2> : <value> }]
+		} 
+	)
+>>> db.studenDetails.find(
+				
+				{
+						$or : [{ "firstName" : "Akhil" },{ "age" : "26" }]
+				} 		
+		 )
+
+---------------------------------------------------------------------------------------------
+(*) 
+
+>>
+
+---------------------------------------------------------------------------------------------
+(*) 
+
+>>
+
+---------------------------------------------------------------------------------------------
+(*) 
+
+>>
+
+---------------------------------------------------------------------------------------------
+(*) 
+
+>>
+
+---------------------------------------------------------------------------------------------
+(*) 
+
+>>
+
+[
+		{
+			"studentNo" : "1",
+			"firstName" : "Akhil",
+			"lastName"  : "Dudhe",
+			"age": "29"
+
+		},
+		{
+			"studentNo" : "2",
+			"firstName" : "John",
+			"lastName"  : "Doe",
+			"age": "15"
+
+		},
+		{
+			"studentNo" : "3",
+			"firstName" : "Katy",
+			"lastName"  : "Perry",
+			"age": "26"
+
+		},
+		{
+			"studentNo" : "4",
+			"firstName" : "Bean",
+			"lastName"  : "Stock",
+			"age": "45"
+
+		}
+
+]

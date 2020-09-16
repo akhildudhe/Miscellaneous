@@ -1,0 +1,82 @@
+
+
+> mongod - -dbpath / Desktop / DB1 - -port 27018 - -logpath logs\class1.log - -logappend
+> mongo - -port 27018
+> use TMDB
+> db.shows.insert([
+    {
+        '_id': '1',
+        'show_name': 'GOT',
+        'description': 'Thriller Show',
+        'start_date': 'April 17, 2011',
+        'season': [{
+            's01': [{
+                'e1': {
+                    'title_name': 'Winter Is Coming',
+                    'Epi_des': 'In the Seven Kingdoms of Westeros, a soldier of the ancient Nights Watch order survives an attack',
+                    'release_date': 'April 17, 2011',
+                    'average_rating': '9',
+                    'U_feedback': [{
+                        'user_id': 'User_1',
+                        'comment_made': 'This would be the awesome series',
+                        'comment_time': 'April 18,2011',
+                        'rating_given': '5'
+                    }]
+                },
+
+                'e2': {
+                    'title_name': 'The Kingsroad',
+                    'Epi_des': 'Having accepted his new role as Kings Hand, Ned leaves',
+                    'release_date': 'April 24, 2011',
+                    'average_rating': '5',
+                    'U_feedback': [{
+                        'user_id': 'User_1',
+                        'comment_made': 'This is getting intense',
+                        'comment_time': 'April 25, 2011',
+                        'rating_given': '5'
+                    }]
+                }
+            }],
+
+            's02': [{
+                'e1': {
+                    'title_name': 'The North Remembers',
+                    'Epi_des': 'To Cersei dismay, Tyrion becomes acting Hand of the King at Kings Landing',
+                    'release_date': 'April 1, 2012',
+                    'average_rating': '9.2',
+                    'U_feedback': [{
+                        'user_id': 'User_2',
+                        'comment_made': 'Bit gruesome, I love the ned Stark',
+                        'comment_time': 'April 1, 2012',
+                        'rating_given': '4.3'
+                    }]
+                },
+            }]
+
+        }]
+    }]);
+
+> db.user.insert([
+    {
+        '_id': 'User_1',
+        'u_Fname': 'Test',
+        'u_Lname': 'User',
+        'Gender': 'M'
+        'acc_created': 'date_created',
+      'mail_id': 'xy@mail.com',
+       'u_name':'test_user'
+   },
+   {
+      '_id': 'User_2',
+      'u_Fname': 'Test2',
+      'u_Lname': 'User2',
+      'Gender': 'F'
+      'acc_created': 'date_created',
+      'mail_id': 'ab@mail.com',
+      'u_name':'test2_user2'
+   }
+
+])
+
+
+
